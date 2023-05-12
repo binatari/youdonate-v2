@@ -36,14 +36,14 @@ const HomeNav = () => {
           class="items-center justify-between hidden w-full md:flex md:w-auto "
           id="navbar-sticky"
         >
-          <ul class="flex flex-col p-4 md:p-0 mt-4 font-medium border  md:flex-row md:space-x-8 md:mt-0 md:border-0 ">
+          <ul class="flex flex-col p-4 md:p-0 mt-4 font-medium border items-center  md:flex-row md:space-x-8 md:mt-0 md:border-0 ">
             <li>
               <a
                 href="#"
                 class="block py-2 pl-3 pr-4 text-white rounded md:bg-transparent md:p-0 fontmd:dark:text-blue-500"
                 aria-current="page"
               >
-                How it works
+                English
               </a>
             </li>
             <li>
@@ -52,8 +52,13 @@ const HomeNav = () => {
                 class="block py-2 pl-3 pr-4 text-white rounded md:bg-transparent md:p-0 fontmd:dark:text-blue-500"
                 aria-current="page"
               >
-                Campaigns
+                Login
               </a>
+            </li>
+            <li>
+              <button className="border border-[#06D6A0] rounded-[80px] text-center bg-[#06D6A0] text-white py-[11.9531px] px-[23.9062px]">
+                Get started
+              </button>
             </li>
           </ul>
         </div>

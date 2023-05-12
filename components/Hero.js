@@ -2,7 +2,7 @@ import React from 'react'
 
 const Hero = () => {
   return (
-    <div className="mx-auto pt-[170px] flex justify-center text-white flex-col items-center max-w-2xl">
+    <div className="mx-auto pt-[170px] flex justify-center text-white flex-col items-center max-w-2xl relative">
       <span className="text-sm leading-7 text-[#676E89] text-center">
         WELCOME TO YOUDONATE PROTOCOL
       </span>
@@ -21,6 +21,7 @@ const Hero = () => {
           Connect wallet
         </button>
       </div>
+      <img src='/assets/gradient-lower.png' className='absolute -bottom-80 -right-80' />
     </div>
   );
 }

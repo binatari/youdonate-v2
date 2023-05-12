@@ -4,6 +4,8 @@ import styles from "../styles/Home.module.css";
 import HomeNav from "../components/HomeNav";
 import Hero from "../components/Hero";
 import FundraiserSteps from "../components/FundraiserSteps";
+import HowToBeDonor from "../components/HowToBeDonor";
+import TrendingCampaigns from "../components/TrendingCampaigns";
 
 export default function Home() {
   const imgArr = Array.from(Array(10).keys());
@@ -36,6 +38,8 @@ export default function Home() {
         </div>
       </div>
       <FundraiserSteps/>
+      <HowToBeDonor/>
+      <TrendingCampaigns/>
     </main>
   );
 }
