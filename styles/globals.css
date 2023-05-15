@@ -5,3 +5,14 @@
 body{
   font-family: Inter, san-serif;
 }
+
+progress[value]::-webkit-progress-bar {
+  background-color: #676E89;
+  border-radius: 27px;
+  height:  7.29px;
+}
+
+progress[value]::-webkit-progress-value {
+  background-color:#06D6A0;
+  border-radius: 27px;
+}

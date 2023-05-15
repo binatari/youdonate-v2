@@ -8,6 +8,11 @@ import {
   YAxis,
 } from "recharts";
 import Layout from "../../components/app/Layout";
+import BarChart from "../../components/app/Dashboard/BarChartCustom";
+import BarChartCustom from "../../components/app/Dashboard/BarChartCustom";
+import ActiveCampaigns from "../../components/app/Dashboard/ActiveCampaigns";
+import BasicTable from "../../components/app/Table.js/BasicTable";
+import { useMemo } from "react";
 
 const index = () => {
   const data = [
@@ -55,6 +60,91 @@ const index = () => {
     },
   ];
 
+  const columns = useMemo(
+    () => [
+      {
+        Header: "Wallet address",
+        accessor: "address",
+      },
+      {
+        // id:'donor',
+        Header: "Asset type",
+        accessor: "asset",
+        Cell: ({ value }) => (
+          <div className="flex space-x-2 items-center">
+            <img src="/assets/btc.png" className="contain" />
+            <p className="text-white ">
+              Bitcoin{" "}
+              <span className="text-[13px]  text-[#667085]">{value}</span>
+            </p>
+          </div>
+        ),
+      },
+      {
+        Header: "Amount",
+        accessor: "amount",
+        Cell: ({ value }) => (
+          <p className="text-white font-semibold">
+            $100,000{" "}
+            <span className="text-[13px] block text-[#667085]">
+              0.218128 BTC
+            </span>
+          </p>
+        ),
+      },
+      {
+        Header: "Type",
+        accessor: "type",
+      },
+      {
+        Header: "Date",
+        accessor: "date",
+      },
+    ],
+    []
+  );
+
+  const rows = useMemo(
+    () => [
+      {
+        address: "23QWEF4532522",
+        asset: "BTC",
+        amount: "100,000",
+        type: "Disaster relief",
+        date: "July 18, 2023",
+      },
+      {
+        address: "23QWEF4532522",
+        asset: "BTC",
+        amount: "100,000",
+        type: "Disaster relief",
+        date: "July 18, 2023",
+      },
+      {
+        address: "23QWEF4532522",
+        asset: "BTC",
+        amount: "100,000",
+        type: "Disaster relief",
+        date: "July 18, 2023",
+      },
+      {
+        address: "23QWEF4532522",
+        asset: "BTC",
+        amount: "100,000",
+        type: "Disaster relief",
+        date: "July 18, 2023",
+      },
+      {
+        address: "23QWEF4532522",
+        asset: "BTC",
+        amount: "100,000",
+        type: "Disaster relief",
+        date: "July 18, 2023",
+      },
+    ],
+    []
+  );
+
   return (
     <div>
       <div className=" md:grid-cols-3 grid gap-4">
@@ -77,34 +167,32 @@ const index = () => {
               </p>
             </div>
             <div className="h-28 w-1/2">
-            <ResponsiveContainer width="100%" height="100%">
-            <AreaChart data={data}  width={600}
-                    height={300}>
-              <defs>
-                <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="#8884d8" stopOpacity={0.8} />
-                  <stop offset="95%" stopColor="#8884d8" stopOpacity={0} />
-                </linearGradient>
-                <linearGradient id="colorPv" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="#82ca9d" stopOpacity={0.8} />
-                  <stop offset="95%" stopColor="#82ca9d" stopOpacity={0} />
-                </linearGradient>
-              </defs>
-              {/* <XAxis dataKey="name" />
+              <ResponsiveContainer width="100%" height="100%">
+                <AreaChart data={data} width={600} height={300}>
+                  <defs>
+                    <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="5%" stopColor="#8884d8" stopOpacity={0.8} />
+                      <stop offset="95%" stopColor="#8884d8" stopOpacity={0} />
+                    </linearGradient>
+                    <linearGradient id="colorPv" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="5%" stopColor="#82ca9d" stopOpacity={0.8} />
+                      <stop offset="95%" stopColor="#82ca9d" stopOpacity={0} />
+                    </linearGradient>
+                  </defs>
+                  {/* <XAxis dataKey="name" />
               <YAxis />
               <CartesianGrid strokeDasharray="3 3" /> */}
-              <Tooltip />
-              <Area
-                type="monotone"
-                dataKey="pv"
-                stroke="#82ca9d"
-                fillOpacity={1}
-                fill="url(#colorPv)"
-              />
-            </AreaChart>
-            </ResponsiveContainer>
+                  <Tooltip />
+                  <Area
+                    type="monotone"
+                    dataKey="pv"
+                    stroke="#82ca9d"
+                    fillOpacity={1}
+                    fill="url(#colorPv)"
+                  />
+                </AreaChart>
+              </ResponsiveContainer>
             </div>
-
           </div>
         </div>
         <div className="rounded-[5px] p-6 bg-[#152238]">
@@ -119,37 +207,43 @@ const index = () => {
               </span>
               <p className="text-sm font-medium text-[#667085]">
                 <span className="text-[#F04438]">
-                <i class="las la-arrow-down"></i>
+                  <i class="las la-arrow-down"></i>
                   15%
                 </span>
                 vs last month
               </p>
             </div>
             <div className="h-28 w-1/2">
-            <ResponsiveContainer width="100%" height="100%">
-            <AreaChart data={data}  width={600}
-                    height={300}>
-              <defs>
-                <linearGradient id="colorBv" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="#F0443826" stopOpacity={0.8} />
-                  <stop offset="95%" stopColor="#F0443826" stopOpacity={0} />
-                </linearGradient>
-              </defs>
-              {/* <XAxis dataKey="name" />
+              <ResponsiveContainer width="100%" height="100%">
+                <AreaChart data={data} width={600} height={300}>
+                  <defs>
+                    <linearGradient id="colorBv" x1="0" y1="0" x2="0" y2="1">
+                      <stop
+                        offset="5%"
+                        stopColor="#F0443826"
+                        stopOpacity={0.8}
+                      />
+                      <stop
+                        offset="95%"
+                        stopColor="#F0443826"
+                        stopOpacity={0}
+                      />
+                    </linearGradient>
+                  </defs>
+                  {/* <XAxis dataKey="name" />
               <YAxis />
               <CartesianGrid strokeDasharray="3 3" /> */}
-              <Tooltip />
-              <Area
-                type="monotone"
-                dataKey="pv"
-                stroke="#F04438"
-                fillOpacity={1}
-                fill="url(#colorBv)"
-              />
-            </AreaChart>
-            </ResponsiveContainer>
+                  <Tooltip />
+                  <Area
+                    type="monotone"
+                    dataKey="pv"
+                    stroke="#F04438"
+                    fillOpacity={1}
+                    fill="url(#colorBv)"
+                  />
+                </AreaChart>
+              </ResponsiveContainer>
             </div>
-
           </div>
         </div>
         <div className="rounded-[5px] p-6 bg-[#152238]">
@@ -171,37 +265,43 @@ const index = () => {
               </p>
             </div>
             <div className="h-28 w-1/2">
-            <ResponsiveContainer width="100%" height="100%">
-            <AreaChart data={data}  width={600}
-                    height={300}>
-              <defs>
-                <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="#8884d8" stopOpacity={0.8} />
-                  <stop offset="95%" stopColor="#8884d8" stopOpacity={0} />
-                </linearGradient>
-                <linearGradient id="colorPv" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="#82ca9d" stopOpacity={0.8} />
-                  <stop offset="95%" stopColor="#82ca9d" stopOpacity={0} />
-                </linearGradient>
-              </defs>
-              {/* <XAxis dataKey="name" />
+              <ResponsiveContainer width="100%" height="100%">
+                <AreaChart data={data} width={600} height={300}>
+                  <defs>
+                    <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="5%" stopColor="#8884d8" stopOpacity={0.8} />
+                      <stop offset="95%" stopColor="#8884d8" stopOpacity={0} />
+                    </linearGradient>
+                    <linearGradient id="colorPv" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="5%" stopColor="#82ca9d" stopOpacity={0.8} />
+                      <stop offset="95%" stopColor="#82ca9d" stopOpacity={0} />
+                    </linearGradient>
+                  </defs>
+                  {/* <XAxis dataKey="name" />
               <YAxis />
               <CartesianGrid strokeDasharray="3 3" /> */}
-              <Tooltip />
-              <Area
-                type="monotone"
-                dataKey="pv"
-                stroke="#82ca9d"
-                fillOpacity={1}
-                fill="url(#colorPv)"
-              />
-            </AreaChart>
-            </ResponsiveContainer>
+                  <Tooltip />
+                  <Area
+                    type="monotone"
+                    dataKey="pv"
+                    stroke="#82ca9d"
+                    fillOpacity={1}
+                    fill="url(#colorPv)"
+                  />
+                </AreaChart>
+              </ResponsiveContainer>
             </div>
-
           </div>
         </div>
+        <BarChartCustom />
+        <ActiveCampaigns />
+        <div className="col-span-3">
+          <BasicTable columns={columns} data={rows} />
+        </div>
+
+        <div></div>
       </div>
+      <div className=" md:grid-cols-3 grid gap-4"></div>
     </div>
   );
 };
