@@ -64,37 +64,37 @@ export default function Sidebar({ show, setter }) {
                     />
                     <MenuItem
                         name="My Campaigns"
-                        route="/my-campaigns"
+                        route="/app/my-campaigns"
                         
                     />
                     <MenuItem
                         name="Donations"
-                        route="/donations"
+                        route="/app/donations"
                        
                     />
                     <MenuItem
                         name="Donors"
-                        route="/donors"
+                        route="/app/donors"
                    
                     />
                      <MenuItem
                         name="Lottery system"
-                        route="/lottery-system"
+                        route="/app/lottery-system"
                    
                     />
                      <MenuItem
                         name="Stake"
-                        route="/stake"
+                        route="/app/stake"
                    
                     />
                      <MenuItem
                         name="Fundraised history"
-                        route="/fundraised-history"
+                        route="/app/fundraised-history"
                    
                     />
                      <MenuItem
                         name="Settings"
-                        route="/settings"
+                        route="/app/settings"
                    
                     />
                 </div>

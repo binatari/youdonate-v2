@@ -18,6 +18,7 @@ const BasicTable = ({
   isLoading,
   changePage,
   lastPage,
+  title
 }) => {
   const [page, setPage] = React.useState(1);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
@@ -62,7 +63,7 @@ const BasicTable = ({
   return (
     <div className="bg-[#152238] w-full p-[35px] overflow-x-auto">
       <div className="w-full flex justify-between">
-        <span className="text-white text-[20px]">Fundraised History</span>
+        <span className="text-white text-[20px]">{title}</span>
         <img src="/assets/up-arrow.png" className="object-contain" />
       </div>
 

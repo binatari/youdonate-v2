@@ -23,6 +23,7 @@ const CampaignCard = () => {
        $800,000
        </p>
       </div>
+      <progress className='w-full' max="100" value="70"></progress>
       <div className="flex justify-between mt-[12px] mb-[17px]">
         <div className="flex space-x-3">
         <img src="/assets/person.png" />
