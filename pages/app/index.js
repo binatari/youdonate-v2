@@ -290,7 +290,7 @@ const index = () => {
         <BarChartCustom />
         <ActiveCampaigns />
         <div className="md:col-span-3 overflow-x-auto">
-          <BasicTable columns={columns} data={rows} />
+          <BasicTable columns={columns} data={rows} showIcon />
         </div>
 
         <div></div>

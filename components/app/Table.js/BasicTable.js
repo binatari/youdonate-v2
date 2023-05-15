@@ -1,11 +1,11 @@
 import React from "react";
 import {
-    useTable,
-    useFilters,
-    useGlobalFilter,
-    useRowSelect,
-    useSortBy,
-  } from "react-table";
+  useTable,
+  useFilters,
+  useGlobalFilter,
+  useRowSelect,
+  useSortBy,
+} from "react-table";
 const BasicTable = ({
   columns,
   paginated = false,
@@ -18,7 +18,8 @@ const BasicTable = ({
   isLoading,
   changePage,
   lastPage,
-  title
+  title,
+  showIcon,
 }) => {
   const [page, setPage] = React.useState(1);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
@@ -56,15 +57,17 @@ const BasicTable = ({
     toggleAllRowsSelected(false);
   };
 
-//   React.useEffect(() => {
-//     setSelectedRows(selectedFlatRows);
-//   }, [selectedFlatRows]);
+  //   React.useEffect(() => {
+  //     setSelectedRows(selectedFlatRows);
+  //   }, [selectedFlatRows]);
 
   return (
     <div className="bg-[#152238] w-full p-[35px] overflow-x-auto">
       <div className="w-full flex justify-between">
         <span className="text-white text-[20px]">{title}</span>
-        <img src="/assets/up-arrow.png" className="object-contain" />
+        {showIcon ? (
+          <img src="/assets/up-arrow.png" className="object-contain" />
+        ) : null}
       </div>
 
       <table {...getTableProps()}>
@@ -100,13 +103,16 @@ const BasicTable = ({
               prepareRow(row);
               return (
                 // Apply the row props
-                <tr {...row.getRowProps()} >
+                <tr {...row.getRowProps()}>
                   {
                     // Loop over the rows cells
                     row.cells.map((cell) => {
                       // Apply the cell props
                       return (
-                        <td {...cell.getCellProps()} className="text-white px-4 py-5 flex-grow flex-shrink-0">
+                        <td
+                          {...cell.getCellProps()}
+                          className="text-white px-4 py-5 flex-grow flex-shrink-0"
+                        >
                           {
                             // Render the cell contents
                             cell.render("Cell")

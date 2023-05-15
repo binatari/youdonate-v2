@@ -27,13 +27,17 @@ progress[value]::-webkit-progress-value {
   );
 } */
 
-.clock:after{
+.clock::before{
 position: absolute;
-top:-10;
+top:-10px;
 left: 0;
 width: 100%;
 height: 100%;
-
+content: '';
+background-image: url(/assets/bg-rectangle.png);
+background-position: center;
+background-size: contain;
+background-repeat: no-repeat;
 }
 
 .clock{
