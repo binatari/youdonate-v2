@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 const HomeNav = () => {
@@ -56,9 +57,11 @@ const HomeNav = () => {
               </a>
             </li>
             <li>
+              <Link href={'/app'}>
               <button className="border border-[#06D6A0] rounded-[80px] text-center bg-[#06D6A0] text-white py-[11.9531px] px-[23.9062px]">
                 Get started
               </button>
+              </Link>
             </li>
           </ul>
         </div>

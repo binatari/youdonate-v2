@@ -1,60 +1,213 @@
-
-import React, { useState } from 'react'
-import Sidebar from '../../components/SideBar'
-import MenuBarMobile from '../../components/MenuBarMobile';
+import {
+  Area,
+  AreaChart,
+  CartesianGrid,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from "recharts";
+import Layout from "../../components/app/Layout";
 
 const index = () => {
-    const [showSidebar, setShowSidebar] = useState(false);
-  return (
-<div className="min-h-screen">
-  {/* <Sidebar aria-label="Default sidebar example">
-    <Sidebar.Items>
-      <Sidebar.ItemGroup>
-        <Sidebar.Item
-          href="#"
-        >
-          Dashboard
-        </Sidebar.Item>
-        <Sidebar.Item
-          href="#"
-          label="Pro"
-          labelColor="alternative"
-        >
-          Kanban
-        </Sidebar.Item>
-        <Sidebar.Item
-          href="#"
-          label="3"
-        >
-          Inbox
-        </Sidebar.Item>
-        <Sidebar.Item
-          href="#"
-        >
-          Users
-        </Sidebar.Item>
-        <Sidebar.Item
-          href="#"
-        >
-          Products
-        </Sidebar.Item>
-        <Sidebar.Item
-          href="#"
-        >
-          Sign In
-        </Sidebar.Item>
-        <Sidebar.Item
-          href="#"
-        >
-          Sign Up
-        </Sidebar.Item>
-      </Sidebar.ItemGroup>
-    </Sidebar.Items>
-  </Sidebar> */}
-  <Sidebar show={showSidebar} setter={setShowSidebar} />
-  <MenuBarMobile setter={setShowSidebar}/>
-</div>
-  )
-}
+  const data = [
+    {
+      name: "Page A",
+      uv: 4000,
+      pv: 2400,
+      amt: 2400,
+    },
+    {
+      name: "Page B",
+      uv: 3000,
+      pv: 1398,
+      amt: 2210,
+    },
+    {
+      name: "Page C",
+      uv: 2000,
+      pv: 9800,
+      amt: 2290,
+    },
+    {
+      name: "Page D",
+      uv: 2780,
+      pv: 3908,
+      amt: 2000,
+    },
+    {
+      name: "Page E",
+      uv: 1890,
+      pv: 4800,
+      amt: 2181,
+    },
+    {
+      name: "Page F",
+      uv: 2390,
+      pv: 3800,
+      amt: 2500,
+    },
+    {
+      name: "Page G",
+      uv: 3490,
+      pv: 4300,
+      amt: 2100,
+    },
+  ];
 
-export default index
+  return (
+    <div>
+      <div className=" md:grid-cols-3 grid gap-4">
+        <div className="rounded-[5px] p-6 bg-[#152238]">
+          <div className="flex justify-between">
+            <span className="text-white">Total Fundraised 💸</span>
+            <img src="/assets/up-arrow.png" className="object-contain" />
+          </div>
+          <div className="w-full flex">
+            <div className="flex flex-col justify-center">
+              <span className="font-semibold text-[30px] leading-[44px] text-white mb-4">
+                $100,000
+              </span>
+              <p className="text-sm font-medium text-[#667085]">
+                <span className="text-[#06D6A0]">
+                  <i class="las la-arrow-up"></i>
+                  40%
+                </span>
+                vs last month
+              </p>
+            </div>
+            <div className="h-28 w-1/2">
+            <ResponsiveContainer width="100%" height="100%">
+            <AreaChart data={data}  width={600}
+                    height={300}>
+              <defs>
+                <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="5%" stopColor="#8884d8" stopOpacity={0.8} />
+                  <stop offset="95%" stopColor="#8884d8" stopOpacity={0} />
+                </linearGradient>
+                <linearGradient id="colorPv" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="5%" stopColor="#82ca9d" stopOpacity={0.8} />
+                  <stop offset="95%" stopColor="#82ca9d" stopOpacity={0} />
+                </linearGradient>
+              </defs>
+              {/* <XAxis dataKey="name" />
+              <YAxis />
+              <CartesianGrid strokeDasharray="3 3" /> */}
+              <Tooltip />
+              <Area
+                type="monotone"
+                dataKey="pv"
+                stroke="#82ca9d"
+                fillOpacity={1}
+                fill="url(#colorPv)"
+              />
+            </AreaChart>
+            </ResponsiveContainer>
+            </div>
+
+          </div>
+        </div>
+        <div className="rounded-[5px] p-6 bg-[#152238]">
+          <div className="flex justify-between">
+            <span className="text-white">Fundraised Today💸</span>
+            <img src="/assets/up-arrow.png" className="object-contain" />
+          </div>
+          <div className="w-full flex">
+            <div className="flex flex-col justify-center">
+              <span className="font-semibold text-[30px] leading-[44px] text-white mb-4">
+                $56,000
+              </span>
+              <p className="text-sm font-medium text-[#667085]">
+                <span className="text-[#F04438]">
+                <i class="las la-arrow-down"></i>
+                  15%
+                </span>
+                vs last month
+              </p>
+            </div>
+            <div className="h-28 w-1/2">
+            <ResponsiveContainer width="100%" height="100%">
+            <AreaChart data={data}  width={600}
+                    height={300}>
+              <defs>
+                <linearGradient id="colorBv" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="5%" stopColor="#F0443826" stopOpacity={0.8} />
+                  <stop offset="95%" stopColor="#F0443826" stopOpacity={0} />
+                </linearGradient>
+              </defs>
+              {/* <XAxis dataKey="name" />
+              <YAxis />
+              <CartesianGrid strokeDasharray="3 3" /> */}
+              <Tooltip />
+              <Area
+                type="monotone"
+                dataKey="pv"
+                stroke="#F04438"
+                fillOpacity={1}
+                fill="url(#colorBv)"
+              />
+            </AreaChart>
+            </ResponsiveContainer>
+            </div>
+
+          </div>
+        </div>
+        <div className="rounded-[5px] p-6 bg-[#152238]">
+          <div className="flex justify-between">
+            <span className="text-white">Active Donors 👥</span>
+            <img src="/assets/up-arrow.png" className="object-contain" />
+          </div>
+          <div className="w-full flex">
+            <div className="flex flex-col justify-center">
+              <span className="font-semibold text-[30px] leading-[44px] text-white mb-4">
+                $100,000
+              </span>
+              <p className="text-sm font-medium text-[#667085]">
+                <span className="text-[#06D6A0]">
+                  <i class="las la-arrow-up"></i>
+                  40%
+                </span>
+                vs last month
+              </p>
+            </div>
+            <div className="h-28 w-1/2">
+            <ResponsiveContainer width="100%" height="100%">
+            <AreaChart data={data}  width={600}
+                    height={300}>
+              <defs>
+                <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="5%" stopColor="#8884d8" stopOpacity={0.8} />
+                  <stop offset="95%" stopColor="#8884d8" stopOpacity={0} />
+                </linearGradient>
+                <linearGradient id="colorPv" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="5%" stopColor="#82ca9d" stopOpacity={0.8} />
+                  <stop offset="95%" stopColor="#82ca9d" stopOpacity={0} />
+                </linearGradient>
+              </defs>
+              {/* <XAxis dataKey="name" />
+              <YAxis />
+              <CartesianGrid strokeDasharray="3 3" /> */}
+              <Tooltip />
+              <Area
+                type="monotone"
+                dataKey="pv"
+                stroke="#82ca9d"
+                fillOpacity={1}
+                fill="url(#colorPv)"
+              />
+            </AreaChart>
+            </ResponsiveContainer>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+index.getLayout = function getLayout(page) {
+  return <Layout>{page}</Layout>;
+};
+
+export default index;

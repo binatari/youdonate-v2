@@ -7,14 +7,14 @@ export default function Sidebar({ show, setter }) {
     const router = useRouter();
 
     // Define our base class
-    const className = "bg-black min-h-screen w-[250px] transition-[margin-left] ease-in-out duration-500 fixed md:static top-0 bottom-0 left-0 z-40";
+    const className = "bg-[#152238] min-h-screen w-[250px] transition-[margin-left] ease-in-out duration-500 fixed md:static top-0 bottom-0 left-0 z-40";
     // Append class based on state of sidebar visiblity
     const appendClass = show ? " ml-0" : " ml-[-250px] md:ml-0";
 
     // Clickable menu items
     const MenuItem = ({ icon, name, route }) => {
         // Highlight menu item based on currently displayed route
-        const colorClass = router.pathname === route ? "text-white" : "text-white/50 hover:text-white";
+        const colorClass = router.pathname === route ? "text-white bg-[#344054]" : "text-white/50 hover:text-white";
 
         return (
             <Link
@@ -22,7 +22,7 @@ export default function Sidebar({ show, setter }) {
                 onClick={() => {
                     setter(oldVal => !oldVal);
                 }}
-                className={`flex gap-1 [&>*]:my-auto text-md pl-6 py-3 border-b-[1px] border-b-white/10 ${colorClass}`}
+                className={`flex gap-1 [&>*]:my-auto text-md pl-6 py-3  ${colorClass}`}
             >
                 {/* <div className="text-xl flex [&>*]:mx-auto w-[30px]">
                     {icon}
@@ -45,36 +45,56 @@ export default function Sidebar({ show, setter }) {
     return (
         <>
             <div className={`${className}${appendClass}`}>
-                <div className="p-2 flex">
+                <div className="pb-[42px] pt-[30px] flex justify-center">
                     <Link href="/">
                         {/*eslint-disable-next-line*/}
-                        <img src={'/assets/logo.png'} alt="Company Logo" width={300} height={300} />
+                        <img src={'/assets/logo-2.png'} alt="Company Logo"  />
                     </Link>
                 </div>
                 <div className="flex flex-col">
                     <MenuItem
-                        name="Home"
-                        route="/"
+                        name="Dashboard"
+                        route="/app"
                        
                     />
                     <MenuItem
-                        name="T-Shirts"
-                        route="/t-shirts"
+                        name="Explore campaigns"
+                        route="/app/explore-campaigns"
                        
                     />
                     <MenuItem
-                        name="Hats"
-                        route="/hats"
+                        name="My Campaigns"
+                        route="/my-campaigns"
                         
                     />
                     <MenuItem
-                        name="About Us"
-                        route="/about"
+                        name="Donations"
+                        route="/donations"
                        
                     />
                     <MenuItem
-                        name="Contact"
-                        route="/contact"
+                        name="Donors"
+                        route="/donors"
+                   
+                    />
+                     <MenuItem
+                        name="Lottery system"
+                        route="/lottery-system"
+                   
+                    />
+                     <MenuItem
+                        name="Stake"
+                        route="/stake"
+                   
+                    />
+                     <MenuItem
+                        name="Fundraised history"
+                        route="/fundraised-history"
+                   
+                    />
+                     <MenuItem
+                        name="Settings"
+                        route="/settings"
                    
                     />
                 </div>

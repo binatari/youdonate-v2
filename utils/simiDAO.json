@@ -1,0 +1,570 @@
+[
+  {
+    "inputs": [
+      {
+        "internalType": "address[]",
+        "name": "approvedMembers",
+        "type": "address[]"
+      },
+      { "internalType": "address", "name": "_ydt", "type": "address" },
+      { "internalType": "uint256", "name": "_minFund", "type": "uint256" }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "constructor"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "proposalId",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "applicantAddress",
+        "type": "address"
+      }
+    ],
+    "name": "CancelProposal",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "amount",
+        "type": "uint256"
+      }
+    ],
+    "name": "Deposit",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "proposer",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "paymentRequested",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "details",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "bool[6]",
+        "name": "flags",
+        "type": "bool[6]"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "proposalId",
+        "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "senderAddress",
+        "type": "address"
+      }
+    ],
+    "name": "ProcessedProposal",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "name",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "media",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "duration",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "proposer",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "paymentRequested",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "details",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "bool[6]",
+        "name": "flags",
+        "type": "bool[6]"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "proposalId",
+        "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "senderAddress",
+        "type": "address"
+      }
+    ],
+    "name": "SubmitDonationProposal",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "proposer",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "paymentRequested",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "details",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "bool[6]",
+        "name": "flags",
+        "type": "bool[6]"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "proposalId",
+        "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "senderAddress",
+        "type": "address"
+      }
+    ],
+    "name": "SubmitMemberProposal",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "proposalIndex",
+        "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "memberAddress",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint8",
+        "name": "uintVote",
+        "type": "uint8"
+      }
+    ],
+    "name": "SubmitVote",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "proposerAddress",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "amount",
+        "type": "uint256"
+      }
+    ],
+    "name": "Withdraw",
+    "type": "event"
+  },
+  {
+    "inputs": [],
+    "name": "ESCROW",
+    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "GUILD",
+    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "TOTAL",
+    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "YDTtoken",
+    "outputs": [
+      { "internalType": "contract IERC20", "name": "", "type": "address" }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "address", "name": "newMemAddress", "type": "address" },
+      { "internalType": "string", "name": "details", "type": "string" }
+    ],
+    "name": "addMember",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "name": "approvedDonations",
+    "outputs": [
+      { "internalType": "string", "name": "name", "type": "string" },
+      { "internalType": "uint256", "name": "duration", "type": "uint256" },
+      { "internalType": "string", "name": "media", "type": "string" },
+      { "internalType": "address", "name": "proposer", "type": "address" },
+      {
+        "internalType": "uint256",
+        "name": "paymentRequested",
+        "type": "uint256"
+      },
+      { "internalType": "uint256", "name": "amountRaised", "type": "uint256" },
+      { "internalType": "uint256", "name": "startingTime", "type": "uint256" },
+      { "internalType": "string", "name": "details", "type": "string" },
+      { "internalType": "uint256", "name": "donors", "type": "uint256" },
+      { "internalType": "bool", "name": "exists", "type": "bool" }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "deposit",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "inputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "name": "donation",
+    "outputs": [
+      { "internalType": "string", "name": "name", "type": "string" },
+      { "internalType": "uint256", "name": "duration", "type": "uint256" },
+      { "internalType": "string", "name": "media", "type": "string" },
+      { "internalType": "address", "name": "proposer", "type": "address" },
+      {
+        "internalType": "uint256",
+        "name": "paymentRequested",
+        "type": "uint256"
+      },
+      { "internalType": "uint256", "name": "amountRaised", "type": "uint256" },
+      { "internalType": "uint256", "name": "startingTime", "type": "uint256" },
+      { "internalType": "string", "name": "details", "type": "string" },
+      { "internalType": "uint256", "name": "donors", "type": "uint256" },
+      { "internalType": "bool", "name": "exists", "type": "bool" }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "_proposalId", "type": "uint256" }
+    ],
+    "name": "getApprovedDonation",
+    "outputs": [
+      {
+        "components": [
+          { "internalType": "string", "name": "name", "type": "string" },
+          { "internalType": "uint256", "name": "duration", "type": "uint256" },
+          { "internalType": "string", "name": "media", "type": "string" },
+          { "internalType": "address", "name": "proposer", "type": "address" },
+          {
+            "internalType": "uint256",
+            "name": "paymentRequested",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "amountRaised",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "startingTime",
+            "type": "uint256"
+          },
+          { "internalType": "string", "name": "details", "type": "string" },
+          { "internalType": "uint256", "name": "donors", "type": "uint256" },
+          { "internalType": "bool", "name": "exists", "type": "bool" }
+        ],
+        "internalType": "struct SimiDAO.ApprovedDonation",
+        "name": "",
+        "type": "tuple"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "getApprovedDonationCount",
+    "outputs": [
+      { "internalType": "uint256", "name": "donationCount", "type": "uint256" }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "getCurrentTime",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "address", "name": "memberAddress", "type": "address" },
+      { "internalType": "uint256", "name": "proposalIndex", "type": "uint256" }
+    ],
+    "name": "getMemberProposalVote",
+    "outputs": [
+      { "internalType": "enum SimiDAO.Vote", "name": "", "type": "uint8" }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "proposalId", "type": "uint256" }
+    ],
+    "name": "getProposalFlags",
+    "outputs": [{ "internalType": "bool[6]", "name": "", "type": "bool[6]" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "getProposalQueueLength",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "startingTime", "type": "uint256" }
+    ],
+    "name": "hasVotingPeriodExpired",
+    "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "_proposalId", "type": "uint256" }
+    ],
+    "name": "isApprovedDonation",
+    "outputs": [{ "internalType": "bool", "name": "isValid", "type": "bool" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "_proposalId", "type": "uint256" }
+    ],
+    "name": "isValidForDonation",
+    "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "joinSimiDAO",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "address", "name": "memToKick", "type": "address" },
+      { "internalType": "string", "name": "details", "type": "string" }
+    ],
+    "name": "kickMember",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "name": "members",
+    "outputs": [
+      { "internalType": "uint256", "name": "shares", "type": "uint256" },
+      { "internalType": "uint256", "name": "loot", "type": "uint256" },
+      { "internalType": "bool", "name": "exists", "type": "bool" },
+      { "internalType": "uint256", "name": "jailed", "type": "uint256" }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "minFund",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "proposalId", "type": "uint256" }
+    ],
+    "name": "processProposal",
+    "outputs": [{ "internalType": "bool", "name": "_status", "type": "bool" }],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "proposalCount",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "name": "proposalQueue",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "name": "proposals",
+    "outputs": [
+      { "internalType": "string", "name": "name", "type": "string" },
+      { "internalType": "uint256", "name": "duration", "type": "uint256" },
+      { "internalType": "string", "name": "media", "type": "string" },
+      { "internalType": "address", "name": "proposer", "type": "address" },
+      {
+        "internalType": "uint256",
+        "name": "paymentRequested",
+        "type": "uint256"
+      },
+      { "internalType": "uint256", "name": "startingTime", "type": "uint256" },
+      { "internalType": "uint256", "name": "yesVotes", "type": "uint256" },
+      { "internalType": "uint256", "name": "noVotes", "type": "uint256" },
+      { "internalType": "string", "name": "details", "type": "string" },
+      { "internalType": "bool", "name": "exists", "type": "bool" }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "_proposalId", "type": "uint256" },
+      { "internalType": "uint256", "name": "_amount", "type": "uint256" }
+    ],
+    "name": "receivedDonation",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "string", "name": "_name", "type": "string" },
+      { "internalType": "uint256", "name": "_goal", "type": "uint256" },
+      { "internalType": "string", "name": "_media", "type": "string" },
+      { "internalType": "uint256", "name": "_duration", "type": "uint256" },
+      { "internalType": "string", "name": "details", "type": "string" }
+    ],
+    "name": "submitDonationProposal",
+    "outputs": [
+      { "internalType": "uint256", "name": "proposalId", "type": "uint256" }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "proposalId", "type": "uint256" },
+      { "internalType": "uint8", "name": "uintVote", "type": "uint8" }
+    ],
+    "name": "submitVote",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "summoningTime",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "votingPeriodLength",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  { "stateMutability": "payable", "type": "receive" }
+]
