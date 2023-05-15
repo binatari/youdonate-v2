@@ -82,8 +82,8 @@ const data = [
 const BarChartCustom = () => {
   return (
     <div className="rounded-[5px] p-6 bg-[#152238] col-span-2">
-      <div className="flex justify-between">
-        <span className="font-medium text-xl text-white">
+      <div className="md:flex justify-between">
+        <span className="font-medium md:inline-block block  md:mb-0 mb-4 text-xl text-white">
           Fundraised Analytics
         </span>
         <div className="bg-[#0F172A] rounded-[37px] flex overflow-x-hidden">

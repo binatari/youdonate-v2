@@ -4,7 +4,7 @@ const ActiveCampaigns = () => {
   return (
     <div className="rounded-[5px] p-6 bg-[#152238]">
           <div className="flex justify-between mb-[37px]">
-            <span className="text-white text-[20px]">ActiveCampaigns <span className='text-[#676E89]'>(4)</span></span>
+            <span className="text-white text-[20px]">Active Campaigns <span className='text-[#676E89]'>(4)</span></span>
             <img src="/assets/up-arrow.png" className="object-contain" />
           </div>
           <div className=''>

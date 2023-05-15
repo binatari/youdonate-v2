@@ -60,7 +60,7 @@ const BasicTable = ({
 //   }, [selectedFlatRows]);
 
   return (
-    <div className="bg-[#152238] w-full p-[35px]">
+    <div className="bg-[#152238] w-full p-[35px] overflow-x-auto">
       <div className="w-full flex justify-between">
         <span className="text-white text-[20px]">Fundraised History</span>
         <img src="/assets/up-arrow.png" className="object-contain" />
@@ -105,7 +105,7 @@ const BasicTable = ({
                     row.cells.map((cell) => {
                       // Apply the cell props
                       return (
-                        <td {...cell.getCellProps()} className="text-white px-4 py-5">
+                        <td {...cell.getCellProps()} className="text-white px-4 py-5 flex-grow flex-shrink-0">
                           {
                             // Render the cell contents
                             cell.render("Cell")

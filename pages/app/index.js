@@ -147,8 +147,8 @@ const index = () => {
 
   return (
     <div>
-      <div className=" md:grid-cols-3 grid gap-4">
-        <div className="rounded-[5px] p-6 bg-[#152238]">
+      <div className="grid-cols-1 md:grid-cols-3 grid gap-4">
+        <div className="rounded-[5px] col-span-2 md:col-span-1 w-full  p-6 bg-[#152238]">
           <div className="flex justify-between">
             <span className="text-white">Total Fundraised 💸</span>
             <img src="/assets/up-arrow.png" className="object-contain" />
@@ -195,7 +195,7 @@ const index = () => {
             </div>
           </div>
         </div>
-        <div className="rounded-[5px] p-6 bg-[#152238]">
+        <div className="rounded-[5px] col-span-2 md:col-span-1 w-full  p-6 bg-[#152238]">
           <div className="flex justify-between">
             <span className="text-white">Fundraised Today💸</span>
             <img src="/assets/up-arrow.png" className="object-contain" />
@@ -230,9 +230,6 @@ const index = () => {
                       />
                     </linearGradient>
                   </defs>
-                  {/* <XAxis dataKey="name" />
-              <YAxis />
-              <CartesianGrid strokeDasharray="3 3" /> */}
                   <Tooltip />
                   <Area
                     type="monotone"
@@ -246,7 +243,7 @@ const index = () => {
             </div>
           </div>
         </div>
-        <div className="rounded-[5px] p-6 bg-[#152238]">
+        <div className="rounded-[5px] col-span-2 md:col-span-1 w-full   p-6 bg-[#152238]">
           <div className="flex justify-between">
             <span className="text-white">Active Donors 👥</span>
             <img src="/assets/up-arrow.png" className="object-contain" />
@@ -277,9 +274,6 @@ const index = () => {
                       <stop offset="95%" stopColor="#82ca9d" stopOpacity={0} />
                     </linearGradient>
                   </defs>
-                  {/* <XAxis dataKey="name" />
-              <YAxis />
-              <CartesianGrid strokeDasharray="3 3" /> */}
                   <Tooltip />
                   <Area
                     type="monotone"
@@ -295,7 +289,7 @@ const index = () => {
         </div>
         <BarChartCustom />
         <ActiveCampaigns />
-        <div className="col-span-3">
+        <div className="md:col-span-3 overflow-x-auto">
           <BasicTable columns={columns} data={rows} />
         </div>
 
