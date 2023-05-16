@@ -128,7 +128,10 @@ gtag('config', 'G-5531V16J0K');`}
       </Head>
       <WagmiConfig client={wagmiClient}>
         <ApolloProvider client={client}>
-        <ConnectKitProvider>
+        <ConnectKitProvider customTheme={{
+          "--ck-font-family": 'Inter',
+          "--ck-accent-color": "#06D6A0",
+        }}>
           <OnBoardContextProvider>
         { getLayout(<Component {...pageProps} />)}
           </OnBoardContextProvider>
