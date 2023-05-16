@@ -14,6 +14,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import useURI from "../hooks/useURI";
 import Script from "next/script";
+import 'flowbite';
 
 function MyApp({ Component, pageProps }) {
   const cache = new InMemoryCache({
