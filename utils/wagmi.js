@@ -3,7 +3,7 @@ import { configureChains, createClient, defaultChains, chain, useSigner } from "
 import { infuraProvider } from "wagmi/providers/infura";
 import { publicProvider } from "wagmi/providers/public";
 import { ethers } from "ethers";
-import { mainnet, polygon, optimism, arbitrum } from "wagmi/chains";
+import { mainnet, polygon, optimism, arbitrum, goerli} from "wagmi/chains";
 
 
 
@@ -164,7 +164,7 @@ export const wagmiClient = createClient( getDefaultClient({
   appName: 'ConnectKit Next.js demo',
   infuraId,
   //alchemyId:  process.env.NEXT_PUBLIC_ALCHEMY_ID,
-  chains: [mainnet, polygon, optimism, arbitrum],
+  chains:myChains,
 }));
 
 // Set up connectors

@@ -13,7 +13,21 @@ import BarChartCustom from "../../components/app/Dashboard/BarChartCustom";
 import ActiveCampaigns from "../../components/app/Dashboard/ActiveCampaigns";
 import BasicTable from "../../components/app/Table.js/BasicTable";
 import { useMemo } from "react";
+import moment from "moment";
+import { gql } from "@apollo/client";
 
+const MY_DONATIONS = gql`
+  query getMyDonations($address: String!) {
+    user(id: $address) {
+      id
+      donation {
+        amount
+        proposaId
+        createdAt
+      }
+    }
+  }
+`;
 const index = () => {
   const data = [
     {
@@ -60,6 +74,36 @@ const index = () => {
     },
   ];
 
+
+  // const smallCase = address?.toLowerCase();
+
+  // const {
+  //   loading: donationsLoading,
+  //   error: donationsError,
+  //   data: donationsData,
+  // } = useQuery(MY_DONATIONS, {
+  //   variables: { address: smallCase },
+  //   enabled: address,
+  // });
+
+
+  const MONTHS = () => {
+    const months = [];
+    const dateStart = moment();
+    const dateEnd = moment().subtract(11, "month");
+    console.log(dateEnd.diff(dateStart, "months"));
+    while (dateEnd.diff(dateStart, "months") <= 0) {
+      months.push({
+        name: dateEnd.format("MMMM"),
+        start: dateEnd.startOf("month").unix(),
+        end: dateEnd.endOf("month").unix(),
+      });
+      dateEnd.add(1, "month");
+    }
+    return months.reverse();
+  };
+
+  console.log(MONTHS());
   const columns = useMemo(
     () => [
       {

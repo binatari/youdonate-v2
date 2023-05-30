@@ -1,6 +1,20 @@
 import React, { useState, useMemo } from "react";
 import Layout from "../../components/app/Layout";
 import BasicTable from "../../components/app/Table.js/BasicTable";
+import { gql, useQuery } from "@apollo/client";
+import { useAccount } from "wagmi";
+const MY_DONATIONS = gql`
+  query getMyDonations($address: String!) {
+    user(id: $address) {
+      id
+      donation {
+        amount
+        proposaId
+        createdAt
+      }
+    }
+  }
+`;
 const donations = () => {
   const [view, setView] = useState("grid");
   const columns = useMemo(
@@ -47,46 +61,26 @@ const donations = () => {
     []
   );
 
-  const rows = useMemo(
-    () => [
-      {
-        address: "23QWEF4532522",
-        asset: "BTC",
-        amount: "100,000",
-        type: "Disaster relief",
-        date: "July 18, 2023",
-      },
-      {
-        address: "23QWEF4532522",
-        asset: "BTC",
-        amount: "100,000",
-        type: "Disaster relief",
-        date: "July 18, 2023",
-      },
-      {
-        address: "23QWEF4532522",
-        asset: "BTC",
-        amount: "100,000",
-        type: "Disaster relief",
-        date: "July 18, 2023",
-      },
-      {
-        address: "23QWEF4532522",
-        asset: "BTC",
-        amount: "100,000",
-        type: "Disaster relief",
-        date: "July 18, 2023",
-      },
-      {
-        address: "23QWEF4532522",
-        asset: "BTC",
-        amount: "100,000",
-        type: "Disaster relief",
-        date: "July 18, 2023",
-      },
-    ],
-    []
-  );
+
+
+  const { address, isConnecting, isDisconnected } = useAccount();
+
+  const smallCase = address?.toLowerCase();
+    const {
+    loading: donationsLoading,
+    error: donationsError,
+    data: donationsData,
+  } = useQuery(MY_DONATIONS, {
+    variables: { address: smallCase },
+    enabled: address,
+  });
+
+
+  const data = donationsData?.user?.donation?.map((entry)=>entry) || []
+
+  
+  const rows = useMemo(()=>data,[data]);
+
   return (
     <div>
       <div className="flex justify-end mb-9">

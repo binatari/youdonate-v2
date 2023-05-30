@@ -2,6 +2,9 @@ import React from "react";
 import Layout from "../../components/app/Layout";
 import Countdown from "react-countdown";
 import { useIsMounted } from "connectkit";
+import useNetworkData from "../../hooks/useNetworkData";
+import { useContractRead } from "wagmi";
+const lotteryABI = require("../../utils/lotteryABI.json");
 
 const renderer = ({ hours, minutes, seconds, completed }) => {
   if (completed) {
@@ -29,6 +32,35 @@ const renderer = ({ hours, minutes, seconds, completed }) => {
 
 const LotterySystem = () => {
   const isMounted = useIsMounted();
+  
+
+  const {lottery} = useNetworkData()
+  const {
+    data,
+    error: countError,
+    loading,
+    isSuccess,
+  } = useContractRead({
+    address: lottery,
+    abi: lotteryABI,
+    functionName: "currentLotteryId",
+  });
+
+
+  const {
+    data:lotteryInfo,
+    error: lotteryError,
+    loading:lotteryLoading,
+    isSuccess:lotterySuccess,
+  } = useContractRead({
+    enabled:!!data,
+    address: lottery,
+    abi: lotteryABI,
+    functionName: "viewLottery",
+    args:[data]
+  });
+
+  console.log(countError)
   return (
     <div className="pb-[200px]">
       <h3 className="text-[24px] text-white text-center font-extrabold">
@@ -48,8 +80,8 @@ const LotterySystem = () => {
           <Countdown
             zeroPadTime={2}
             daysInHours
-            key={100000}
-            date={1000000000}
+            key={Number(lotteryInfo?.endTime?.toString() || '0') * 1000}
+            date={Number(lotteryInfo?.endTime?.toString() || '0') * 1000}
             renderer={renderer}
             autoStart={true}
           />

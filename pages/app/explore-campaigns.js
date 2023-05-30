@@ -2,10 +2,30 @@ import React, { useState } from 'react'
 import Layout from "../../components/app/Layout";
 import Categories from '../../components/app/Categories';
 import CampaignCard from '../../components/CampaignCard';
+import { gql, useQuery } from '@apollo/client';
+import { InView } from "react-intersection-observer";
+
+const MY_PROPOSALS = gql`
+  query getMyProposals ($category: String,  $first: Int,) {
+    approvedDonations( first: $first, where: {category_contains: $category}) {
+      senderAddress
+      proposalId
+      amountRaised
+      paymentRequested
+      name
+      donors
+    }
+  }
+`;
 const ExploreCampaigns = () => {
-  const [filter, setFilter] = useState('all')
+  const [filter, setFilter] = useState('')
   const [view, setView] = useState('grid')
-  const imgArr = Array.from(Array(10).keys());
+  const { loading, error, data,  fetchMore,
+    refetch } = useQuery(MY_PROPOSALS, {
+    variables: { category:filter, first: 8 },
+  });
+
+  console.log(error, data)
 return (
   <div>
     <div className="flex justify-between space-x-8 flex-wrap">
@@ -28,9 +48,43 @@ return (
       </div>
     </div>
     <div className="grid md:grid-cols-3 grid-cols-1 gap-8 mt-12">
-      {
-        imgArr.map((entry)=><div className="flex justify-center md:justify-start" ><CampaignCard/></div>)
-      }
+    {data?.approvedDonations?.map(
+          (
+            { proposalId, amountRaised, paymentRequested, donors, name },
+            index
+          ) => (
+            <CampaignCard
+              name={name}
+              duration={100000}
+              media={""}
+              status={""}
+              donors={donors}
+              approved
+              details={""}
+              proposalId={proposalId}
+              PaymentRequested={paymentRequested}
+              amountRaised={amountRaised}
+              key={proposalId}
+            />
+          )
+        )}
+        {data && (
+        <InView
+          onChange={async (inView) => {
+            const currentLength = data.approvedDonations.length || 0;
+            if (inView) {
+              await fetchMore({
+                variables: {
+                  first: currentLength +  8,
+                  category:filter
+                },
+              }).then(res=>{
+                console.log(res)
+               return res}).catch(err=>console.log(err));
+            }
+          }}
+        />
+      )}
     </div>
   </div>
 );

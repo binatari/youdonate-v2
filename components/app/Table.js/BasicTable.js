@@ -1,3 +1,4 @@
+import moment from "moment";
 import React from "react";
 import {
   useTable,
@@ -60,7 +61,7 @@ const BasicTable = ({
   //   React.useEffect(() => {
   //     setSelectedRows(selectedFlatRows);
   //   }, [selectedFlatRows]);
-
+ 
   return (
     <div className="bg-[#152238] w-full p-[35px] overflow-x-auto">
       <div className="w-full flex justify-between">
@@ -70,7 +71,7 @@ const BasicTable = ({
         ) : null}
       </div>
 
-      <table {...getTableProps()}>
+      <table {...getTableProps()} className="w-full">
         <thead>
           {headerGroups.map((headerGroup) => (
             <tr {...headerGroup.getHeaderGroupProps()}>
@@ -103,7 +104,7 @@ const BasicTable = ({
               prepareRow(row);
               return (
                 // Apply the row props
-                <tr {...row.getRowProps()}>
+                <tr {...row.getRowProps()} className="text-center">
                   {
                     // Loop over the rows cells
                     row.cells.map((cell) => {
