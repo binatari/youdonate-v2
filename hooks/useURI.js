@@ -14,7 +14,7 @@ const useURI = () => {
         // console.log(setAuthorizationLink)
         return;
       }
-      setUri('https://api.thegraph.com/subgraphs/name/l-tech/arbitrum-ydt');
+      setUri('https://api.thegraph.com/subgraphs/name/l-tech/arbi-ydt');
     }, [chain]);
   
   

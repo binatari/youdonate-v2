@@ -2,6 +2,7 @@ import { configureChains, createClient, defaultChains, chain, useSigner } from "
 
 import { infuraProvider } from "wagmi/providers/infura";
 import { publicProvider } from "wagmi/providers/public";
+import { alchemyProvider } from "wagmi/providers/alchemy";
 import { ethers } from "ethers";
 import { mainnet, polygon, optimism, arbitrum, goerli} from "wagmi/chains";
 
@@ -40,7 +41,7 @@ const binanceTestnet = {
 const { chains, provider, webSocketProvider } = configureChains(
   [mainnet, arbitrum],
   [
-    infuraProvider({ apiKey:infuraId }),
+    alchemyProvider({ apiKey:'Vl7I6FKf7kYGDBcJ98shs8Y3U858Y2fm' }),
     publicProvider(),
   ]
 );

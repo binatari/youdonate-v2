@@ -12,74 +12,8 @@ import {
   ResponsiveContainer,
   Tooltip,
 } from "recharts";
-const data = [
-  {
-    name: `${85}%`,
-    uv: 85,
-    color: "#85A5FF",
-  },
-  {
-    name: `${95}%`,
-    uv: 95,
-    color: "#ADC6FF",
-  },
-  {
-    name: `${80}%`,
-    uv: 80,
-    color: "#D6E4FF",
-  },
-  {
-    name: `${85}%`,
-    uv: 85,
-    color: "#85A5FF",
-  },
-  {
-    name: `${95}%`,
-    uv: 95,
-    color: "#ADC6FF",
-  },
-  {
-    name: `${80}%`,
-    uv: 80,
-    color: "#D6E4FF",
-  },
-  {
-    name: `${85}%`,
-    uv: 85,
-    color: "#85A5FF",
-  },
-  {
-    name: `${95}%`,
-    uv: 95,
-    color: "#ADC6FF",
-  },
-  {
-    name: `${80}%`,
-    uv: 80,
-    color: "#D6E4FF",
-  },
-  {
-    name: `${80}%`,
-    uv: 80,
-    color: "#D6E4FF",
-  },
-  {
-    name: `${85}%`,
-    uv: 85,
-    color: "#85A5FF",
-  },
-  {
-    name: `${95}%`,
-    uv: 95,
-    color: "#ADC6FF",
-  },
-  {
-    name: `${80}%`,
-    uv: 80,
-    color: "#D6E4FF",
-  },
-];
-const BarChartCustom = () => {
+
+const BarChartCustom = ({data}) => {
   return (
     <div className="rounded-[5px] p-6 bg-[#152238] col-span-2">
       <div className="md:flex justify-between">
@@ -106,7 +40,7 @@ const BarChartCustom = () => {
           <YAxis />
           <Tooltip />
             <Bar
-              dataKey="uv"
+              dataKey="amt"
               fill="#8884d8"
               radius={8}
               // label={{

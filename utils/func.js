@@ -1,3 +1,5 @@
+import { ethers } from "ethers";
+
 export function similar_text(first, second, percent) {
     //  discuss at: http://phpjs.org/functions/similar_text/
     // original by: Rafał Kukawski (http://blog.kukawski.pl)
@@ -58,7 +60,12 @@ export function similar_text(first, second, percent) {
     }
   }
 
-
+  export const convertToMoney = (amount) =>{
+    return Number(ethers.utils.formatUnits(amount || 0, 8).toString())
+         .toFixed(2)
+         .replace(/\d(?=(\d{3})+\.)/g, "$&,")
+   }
+ 
   export const createImage = (url) =>
   new Promise((resolve, reject) => {
     const image = new Image()
