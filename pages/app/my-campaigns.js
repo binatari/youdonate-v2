@@ -4,6 +4,7 @@ import CampaignCard from "../../components/CampaignCard";
 import { gql, useQuery } from "@apollo/client";
 import { useAccount } from "wagmi";
 import { InView } from "react-intersection-observer";
+import DatePicker from "../../components/app/DatePicker";
 
 const MY_PROPOSALS = gql`
   query getMyProposals($address: String!) {
@@ -29,7 +30,7 @@ const MyCampaigns = () => {
     enabled: address,
   });
 
-  console.log(error)
+
   return (
     <div>
       <div className="flex justify-between space-x-8 flex-wrap">
@@ -92,10 +93,7 @@ const MyCampaigns = () => {
               List
             </button>
           </div>
-          <button className="text-lg flex items-center py-3 px-4 text-white bg-[#344054] rounded-[5px]">
-            <i class="las la-calendar-day"></i>
-            Date posted
-          </button>
+          <DatePicker/>
         </div>
       </div>
       <div className="grid md:grid-cols-3 grid-cols-1 gap-8 mt-12">

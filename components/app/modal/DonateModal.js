@@ -12,16 +12,15 @@ import {
   useSigner,
   useBalance,
 } from "wagmi";
-const ydtABI = require("../../utils/donateABI.json");
-const ercABI = require("../../utils/ercABI.json");
+const ydtABI = require("../../../utils/donateABI.json");
+const ercABI = require("../../../utils/ercABI.json");
 import { BigNumber, ethers } from "ethers";
 import Select, { components } from "react-select";
 
 // import { donate, getBalance } from "../../utils/contract";
 import { NumericFormat } from "react-number-format";
-import { donate, gaslessTransaction } from "../../utils/wagmi";
-import { useOnboardProvider } from "../../context/OnBoardProvider";
-import useNetworkData from '../../hooks/useNetworkData'
+import { useOnboardProvider } from "../../../context/OnBoardProvider";
+import useNetworkData from '../../../hooks/useNetworkData'
 
 const DonateModal = ({ id, depositRefetch }) => {
   const [open, setOpen] = useState(false);

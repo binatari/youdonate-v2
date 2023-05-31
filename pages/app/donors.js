@@ -1,7 +1,10 @@
 import React, { useMemo, useState } from 'react'
 import Layout from "../../components/app/Layout";
 import BasicTable from '../../components/app/Table.js/BasicTable';
+import { Popover, PopoverContent, PopoverTrigger } from '../../components/ui/popover';
+import { Calendar } from '../../components/ui/calendar';
 const donors = () => {
+  const [date, setDate] = React.useState()
   const [view, setView] = useState("grid");
   const [filter, setFilter] = useState('all')
   const columns = useMemo(
@@ -108,7 +111,9 @@ const donors = () => {
           >
             Bitcoins
           </button>
-          <button
+          <Popover>
+      <PopoverTrigger asChild>
+      <button
             className={`py-3 flex items-center space-x-2 px-8 text-lg text-center  ${
               view == "list" ? "bg-[#344054] text-white" : "text-[#676E89]"
             }`}
@@ -117,6 +122,17 @@ const donors = () => {
             <i class="las la-calendar-day"></i>
             Date posted
           </button>
+      </PopoverTrigger>
+      <PopoverContent className="w-auto p-0">
+        <Calendar
+          mode="single"
+          selected={date}
+          onSelect={setDate}
+          initialFocus
+        />
+      </PopoverContent>
+    </Popover>
+       
         </div>
       </div>
       <BasicTable data={rows} columns={columns} title={'My donors'} />

@@ -16,6 +16,8 @@ import {
 } from "wagmi";
 import { BigNumber } from "ethers";
 import { gql, useQuery } from "@apollo/client";
+import DonateModal from "./app/modal/DonateModal";
+import VoteModal from "./app/modal/VoteModal";
 const ethers = require("ethers");
 const goerSimi = require("../utils/goerliSimi.json");
 
@@ -126,12 +128,11 @@ const CampaignCard = ({
         </div>
       </div>
       <div className="flex space-x-3">
-        <button className="bg-[#06D6A0] border border-[#06D6A0] rounded-[80px] text-center text-white py-[11.9531px] px-[23.9062px] w-1/2">
+        {/* <button className="bg-[#06D6A0] border border-[#06D6A0] rounded-[80px] text-center text-white py-[11.9531px] px-[23.9062px] w-1/2">
           Donate
-        </button>
-        <button className="border border-[#06D6A0] rounded-[80px] text-center text-[#06D6A0] py-[11.9531px] px-[23.9062px] w-1/2">
-          Vote
-        </button>
+        </button> */}
+          <VoteModal id={proposalId} showButton setOpen={setOpen} open={open} />
+          <DonateModal id={proposalId} />
       </div>
     </div>
   );

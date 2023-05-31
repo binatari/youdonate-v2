@@ -3,9 +3,9 @@ import { Dialog, Transition } from "@headlessui/react";
 import Button from "../Button";
 import SuccessModal from "./SuccessModal";
 import { useContractWrite, usePrepareContractWrite, useContractRead, useAccount } from "wagmi";
-const simiABI = require("../../utils/goerliSimi.json");
+const simiABI = require("../../../utils/goerliSimi.json");
 import { useRouter } from "next/router";
-import useNetworkData from '../../hooks/useNetworkData'
+import useNetworkData from '../../../hooks/useNetworkData'
 // import { submitVote } from "../../utils/contract";
 const VoteModal = ({ id,  setOpen, open, showButton, votesRefetch }) => {
   const [value, setValue] = useState(null);
@@ -53,7 +53,7 @@ const VoteModal = ({ id,  setOpen, open, showButton, votesRefetch }) => {
     <>
     {
       !data && showButton &&  <Button
-      variant={"contained"}
+      variant={"outlined"}
       onClick={() => setOpen(true)}
       disabled={!!data}
       // style={{
