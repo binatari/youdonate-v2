@@ -21,12 +21,12 @@ const BarChartCustom = ({data}) => {
           Fundraised Analytics
         </span>
         <div className="bg-[#0F172A] rounded-[37px] flex overflow-x-hidden">
-          <div className="pt-2 pb-1 px-4 text-[#667085] cursor-pointer">
+          {/* <div className="pt-2 pb-1 px-4 text-[#667085] cursor-pointer">
             Daily
           </div>
           <div className="pt-2 pb-1 px-4 text-[#667085] cursor-pointer">
             Weekly
-          </div>
+          </div> */}
           <div className="pt-2 pb-1 px-4 bg-white rounded-[20px] font-medium text-sm text-[#152238] cursor-pointer">
             Monthly
           </div>
@@ -37,8 +37,8 @@ const BarChartCustom = ({data}) => {
           <BarChart width={500} height={300} data={data}  barSize={10}>
           <CartesianGrid strokeDasharray="10 10" />
           <XAxis dataKey="name" />
-          <YAxis />
-          <Tooltip />
+          {/* <YAxis /> */}
+          <Tooltip  />
             <Bar
               dataKey="amt"
               fill="#8884d8"

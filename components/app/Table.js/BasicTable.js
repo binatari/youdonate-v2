@@ -96,7 +96,10 @@ const BasicTable = ({
           ))}
         </thead>
 
-        <tbody {...getTableBodyProps()}>
+        {
+          isLoading ? <div className="h-[10vh] w-full flex justify-center items-center">
+          <span className="dot-falling"></span>
+                </div> :     <tbody {...getTableBodyProps()}>
           {
             // Loop over the table rows
             rows.map((row) => {
@@ -127,6 +130,9 @@ const BasicTable = ({
             })
           }
         </tbody>
+        }
+
+    
       </table>
     </div>
   );

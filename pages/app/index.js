@@ -157,8 +157,13 @@ const index = () => {
   .reduce((acc, donation) => acc + Number(donation.amount), 0);
 
   return (
+
     <div>
-      <div className="grid-cols-1 md:grid-cols-3 grid gap-4">
+      {
+        donationsLoading ? <div className="h-[80vh] w-full flex justify-center items-center">
+  <span className="dot-falling"></span>
+        </div> : <>
+        <div className="grid-cols-1 md:grid-cols-3 grid gap-4">
         <div className="rounded-[5px] col-span-2 md:col-span-1 w-full  p-6 bg-[#152238]">
           <div className="flex justify-between">
             <span className="text-white">Total Fundraised 💸</span>
@@ -261,7 +266,7 @@ const index = () => {
           <div className="w-full flex">
             <div className="flex flex-col justify-center">
               <span className="font-semibold text-[30px] leading-[44px] text-white mb-4">
-                2
+                0
               </span>
               <p className="text-sm font-medium text-[#667085]">
                 <span className="text-[#06D6A0]">
@@ -306,6 +311,9 @@ const index = () => {
         <div></div>
       </div>
       <div className=" md:grid-cols-3 grid gap-4"></div>
+        </>
+      }
+
     </div>
   );
 };

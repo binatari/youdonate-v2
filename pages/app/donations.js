@@ -128,7 +128,7 @@ const donations = () => {
        
         </div>
       </div>
-      <BasicTable data={rows} columns={columns} title={'My donations'} />
+      <BasicTable data={rows} columns={columns} isLoading={donationsLoading} title={'My donations'} />
       {/* {data && (
         <InView
           onChange={async (inView) => {

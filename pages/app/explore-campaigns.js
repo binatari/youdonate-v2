@@ -45,7 +45,10 @@ return (
         <DatePicker/>
       </div>
     </div>
-    <div className="grid md:grid-cols-3 grid-cols-1 gap-8 mt-12">
+    {
+      loading ? <div className="h-[80vh] w-full flex justify-center items-center">
+      <span className="dot-falling"></span>
+            </div> :     <div className="grid md:grid-cols-3 grid-cols-1 gap-8 mt-12">
     {data?.approvedDonations?.map(
           (
             { proposalId, amountRaised, paymentRequested, donors, name },
@@ -84,6 +87,8 @@ return (
         />
       )}
     </div>
+    }
+
   </div>
 );
 };

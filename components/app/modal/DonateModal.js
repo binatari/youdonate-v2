@@ -200,7 +200,7 @@ const DonateModal = ({ id, depositRefetch }) => {
   return (
     <>
       <Button variant={"contained"} onClick={handleOpen}>
-        Donate <i class="las la-heart la-md"></i>
+        Donate
       </Button>
       <Transition.Root show={open} as={Fragment}>
         <Dialog
